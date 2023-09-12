@@ -44,9 +44,10 @@ const Navbar = () => {
 				position: "static",
 				background: "none",
 				boxShadow: "none",
+                // border:"1px solid red",
 			}}
 		>
-			<Toolbar sx={{ justifyContent: "space-between" }}>
+			<Toolbar sx={{ justifyContent: "space-between", }}>
 				{/* Left side */}
 				<FlexBetween>
 					<IconButton onClick={() => console.log("Sidebar Toggle")}>
