@@ -1,6 +1,6 @@
 import { useMemo } from "react"
 import { CssBaseline, ThemeProvider } from "@mui/material"
-import {createTheme} from "@mui/material/styles" // this is like a css refix
+import {createTheme} from "@mui/material/styles" 
 import { themeSettings } from "./theme"
 import { useSelector } from "react-redux"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
@@ -14,7 +14,7 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
+           <CssBaseline /> {/*reset the user agent css */}
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/dashboard" replace/>}/> when user hits / redirect to /dashboard
