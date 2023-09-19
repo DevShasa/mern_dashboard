@@ -9,7 +9,7 @@ import {
     ListItemIcon,
     ListItemText,
     Typography,
-    useTheme
+    useTheme,
 } from "@mui/material"
 import PropTypes from 'prop-types'
 import {
@@ -26,7 +26,7 @@ import {
     CalendarMonthOutlined,
     AdminPanelSettingsOutlined,
     TrendingUpRounded,
-    PieChartOutlined
+    PieChartOutlined,
 } from "@mui/icons-material"
 
 import { useEffect, useState } from "react"
@@ -58,6 +58,7 @@ const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) =>
     const navigate = useNavigate();
     const theme = useTheme()
 
+
     useEffect(()=>{
         setActive(pathname.substring(1)) // match active
     },[pathname])
@@ -79,22 +80,90 @@ const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) =>
                         boxSizing:"border-box",
                         borderWidth: isDesktop ? 0 :"2px",
                         width: drawerWidth
-                    }
+                    },
                 }}
             >
-                <Box width="100%">
+                <Box width="100%"  sx={{marginBottom:"7rem"}}>
                     <Box m="1.5rem 2rem 2rem 3rem">
                         <FlexBetween color={theme.palette.secondary.main} gap="0.5rem">
                             <Typography variant="h4" fontWeight="bold">
                                 ECOMVISION
                             </Typography>
+                            {!isDesktop && (
+                                <IconButton onClick={()=>setIsSidebarOpen(prev => !prev)}>
+                                    <ChevronLeft />
+                                </IconButton>
+                            )}
                         </FlexBetween>
                     </Box>
                     <List>
+                        {navItems.map(({text, icon})=>{
+                            if(!icon){
+                                return(
+                                    <Typography key={text} sx={{m:"2.25rem 0 1rem 3rem"}}>
+                                        {text}
+                                    </Typography>
+                                )
+                            }
 
+                            const lowerCaseIconText = text.toLowerCase()
+                            return(
+                                <ListItem key={text} disablePadding>
+                                    <ListItemButton
+                                        onClick={()=> {
+                                            navigate(`/${lowerCaseIconText}`)
+                                            setActive(lowerCaseIconText)
+                                        }}
+                                        sx={{
+                                            backgroundColor: active === lowerCaseIconText ? theme.palette.secondary[300] : "transparent",
+                                            color:active === lowerCaseIconText ? theme.palette.primary[600] : theme.palette.secondary[100]
+                                        }}
+                                    >
+                                        <ListItemIcon
+                                            sx={{
+                                                ml:"2rem",
+                                                color: active === lowerCaseIconText ? theme.palette.primary[600] : theme.palette.secondary[200]
+                                            }}
+                                        >
+                                            {icon}
+                                        </ListItemIcon>
+                                        <ListItemText primary={text}/>
+                                        {active === lowerCaseIconText && (<ChevronRightOutlined sx={{ml:"auto"}} />)}
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        })}
                     </List>
                 </Box>
-                <Box></Box>
+
+                <Box 
+                    position="fixed" 
+                    bottom="0" 
+                    sx={{backgroundColor:theme.palette.primary[500], paddingBlock:"1rem"}}
+                    >
+                    <Divider/>
+                    <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+                        <Box 
+                            component="img"
+                            alt="profile"
+                            src={profileImage}
+                            height="40px"
+                            width="40px"
+                            borderRadius="50%"
+                            sx={{objectFit:"cover"}}
+                        />
+                        <Box textAlign="left">
+                            <Typography fontWeight="bold" fontSize="0.9rem" sx={{color:theme.palette.secondary[100]}}>James</Typography>
+                            <Typography fontSize="0.8rem" sx={{color:theme.palette.secondary[100]}}>Farmer</Typography>
+                        </Box>
+                        <SettingsOutlined 
+                            sx={{
+                                color:theme.palette.secondary[300],
+                                fontSize:"25px"
+                            }}
+                        />
+                    </FlexBetween>
+                </Box>
             </Drawer>
         )}
     </Box>

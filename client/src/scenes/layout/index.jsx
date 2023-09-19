@@ -12,7 +12,9 @@ const Layout = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
-  
+  const toggleSidebar = () =>{
+    setIsSidebarOpen(prev => !prev)
+  }
 
   return (
     <Box width={"100%"} height={"100%"} display={isDesktop ? "flex" : "block"}>
@@ -25,9 +27,9 @@ const Layout = () => {
         <Box flexGrow={1}>
             <Navbar 
                 isSidebarOpen={isSidebarOpen}
-                setIsSidebarOpen={setIsSidebarOpen}
+                setIsSidebarOpen={toggleSidebar}
             />
-            <Outlet />
+            <Outlet /> {/* Our components like <Dashboard /> appear here */}
         </Box>
     </Box>
   )

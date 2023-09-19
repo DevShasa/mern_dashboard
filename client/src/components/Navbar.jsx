@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types'
 import {
 	LightModeOutlined,
 	Search,
@@ -24,7 +25,11 @@ import {
     MenuItem
 } from "@mui/material";
 
-const Navbar = () => {
+
+
+const Navbar = (props) => {
+
+    const {isSidebarOpen,setIsSidebarOpen } = props
 	const theme = useTheme();
 	const dispatch = useDispatch();
 
@@ -50,7 +55,7 @@ const Navbar = () => {
 			<Toolbar sx={{ justifyContent: "space-between", }}>
 				{/* Left side */}
 				<FlexBetween>
-					<IconButton onClick={() => console.log("Sidebar Toggle")}>
+					<IconButton onClick={setIsSidebarOpen}>
 						<MenuIcon />
 					</IconButton>
 					<FlexBetween
@@ -121,5 +126,11 @@ const Navbar = () => {
 		</AppBar>
 	);
 };
-
+Navbar.propTypes ={
+    setIsSidebarOpen: PropTypes.func,
+    isSidebarOpen:PropTypes.bool
+}
 export default Navbar;
+
+
+
