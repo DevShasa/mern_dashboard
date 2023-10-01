@@ -83,7 +83,7 @@ const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) =>
                     },
                 }}
             >
-                <Box width="100%"  sx={{marginBottom:"7rem"}}>
+                <Box width="100%" code  sx={{marginBottom:"7rem"}}>
                     <Box m="1.5rem 2rem 2rem 3rem">
                         <FlexBetween color={theme.palette.secondary.main} gap="0.5rem">
                             <Typography variant="h4" fontWeight="bold">
@@ -165,7 +165,7 @@ const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) =>
                     </FlexBetween>
                 </Box>
             </Drawer>
-        )}
+        )} 
     </Box>
   )
 }

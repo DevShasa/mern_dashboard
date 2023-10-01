@@ -17,7 +17,7 @@ const Layout = () => {
   }
 
   return (
-    <Box width={"100%"} height={"100%"} display={isDesktop ? "flex" : "block"}>
+    <Box width={"100%"} height={"100%"} display={isDesktop ? "flex" : "flex"}>
         <Sidebar 
           isDesktop={isDesktop}
           drawerWidth="250px"

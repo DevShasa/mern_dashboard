@@ -17,7 +17,7 @@ function App() {
            <CssBaseline /> {/*reset the user agent css */}
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace/>}/> when user hits / redirect to /dashboard
+              <Route path="/" element={<Navigate to="/dashboard" replace/>}/> {/*when user hits / redirect to /dashboard */}
               <Route path="/dashboard" element={<Dashboard />}/>
             </Route>
           </Routes>

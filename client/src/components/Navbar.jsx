@@ -49,7 +49,7 @@ const Navbar = (props) => {
 				position: "static",
 				background: "none",
 				boxShadow: "none",
-                // border:"1px solid red",
+                //  border:"1px solid red",
 			}}
 		>
 			<Toolbar sx={{ justifyContent: "space-between", }}>
@@ -82,45 +82,45 @@ const Navbar = (props) => {
                         <SettingsOutlined />
                     </IconButton>
 
-                    <FlexBetween>
-                        <Button 
-                            onClick={handleClick}
-                            sx={{
-                                display:"flex",
-                                justifyContent:"space-between",
-                                alignItems:"center",
-                                textTransform:"none",
-                                gap:"1rem"
-                            }}
-                        >
-                            <Box
-                                component="img"
-                                alt="profile"
-                                src={profileImage}
-                                height="35px"
-                                width="35px"
-                                borderRadius="50%"
-                                sx={{objectFit:"cover"}}
-                            />
-                            <Box textAlign="left">
-                                <Typography fontWeight="bold" fontSize="0.85rem" sx={{color: theme.palette.secondary[100]}}>
-                                    James
-                                </Typography>
-                                <Typography fontSize="0.75rem" sx={{color: theme.palette.secondary[200]}}>
-                                    Plumber
-                                </Typography>
-                            </Box>
-                            <ArrowDropDownOutlined sx={{color: theme.palette.secondary[300], fontSize:"35px"}} />
-                        </Button>
-                        <Menu
-                            anchorEl={anchorElement}
-                            open={isOpen}
-                            onClose={handleClose}
-                            anchorOrigin={{vertical:"bottom", horizontal:"center"}}
-                        >
-                            <MenuItem onClick={handleClose}>Log Out</MenuItem>
-                        </Menu>
-                    </FlexBetween>
+                    <Button 
+                        onClick={handleClick}
+                        sx={{
+                            display:"flex",
+                            justifyContent:"space-between",
+                            alignItems:"center",
+                            textTransform:"none",
+                            gap:"1rem"
+                        }}
+                    >
+                        <Box
+                            component="img"
+                            alt="profile"
+                            src={profileImage}
+                            height="35px"
+                            width="35px"
+                            borderRadius="50%"
+                            sx={{objectFit:"cover"}}
+                        />
+                        <Box textAlign="left">
+                            <Typography fontWeight="bold" fontSize="0.85rem" sx={{color: theme.palette.secondary[100]}}>
+                                James
+                            </Typography>
+                            <Typography fontSize="0.75rem" sx={{color: theme.palette.secondary[200]}}>
+                                Plumber
+                            </Typography>
+                        </Box>
+                        <ArrowDropDownOutlined sx={{color: theme.palette.secondary[300], fontSize:"35px"}} />
+                    </Button>
+
+                    <Menu
+                        // the menu only appears in the dom when trigger is clicked
+                        anchorEl={anchorElement}
+                        open={isOpen}
+                        onClose={handleClose}
+                        anchorOrigin={{vertical:"bottom", horizontal:"center"}}
+                    >
+                        <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                    </Menu>
                 </FlexBetween>
 			</Toolbar>
 		</AppBar>
