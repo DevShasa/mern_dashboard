@@ -13,3 +13,7 @@ const UserSchema = new mongoose.Schema({
     transactions: Array,
     role:{type: String, enum:["user", "admin", "superadmin"]} 
 }, {timestamps: true})
+
+
+const User = mongoose.model("User", UserSchema)
+export default User

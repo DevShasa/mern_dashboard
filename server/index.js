@@ -9,6 +9,8 @@ import clientRoutes from  "./routes/client.js"
 import generalRoutes from  "./routes/general.js"
 import managementRoutes from  "./routes/management.js"
 import salesRoutes from  "./routes/sales.js"
+import { dataUser } from "./data/index.js"
+import User from "./models/User.js"
 
 // CONFIGURATION
 dotenv.config() // load environment files from .env file into process.env
@@ -37,5 +39,8 @@ app.use("/sales", salesRoutes)
 // LISTEN
 connectDB().then(()=>{
     app.listen(PORT, ()=> console.log(`📘 Server running on port ${PORT}`))
+
+    // insert datauser into db once 
+    // User.insertMany(dataUser)
 })
 
