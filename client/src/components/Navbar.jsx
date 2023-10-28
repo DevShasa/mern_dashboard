@@ -29,7 +29,7 @@ import {
 
 const Navbar = (props) => {
 
-    const {isSidebarOpen,setIsSidebarOpen } = props
+    const {isSidebarOpen,setIsSidebarOpen, user } = props
 	const theme = useTheme();
 	const dispatch = useDispatch();
 
@@ -103,10 +103,10 @@ const Navbar = (props) => {
                         />
                         <Box textAlign="left">
                             <Typography fontWeight="bold" fontSize="0.85rem" sx={{color: theme.palette.secondary[100]}}>
-                                James
+                                {user?.name}
                             </Typography>
                             <Typography fontSize="0.75rem" sx={{color: theme.palette.secondary[200]}}>
-                                Plumber
+                                {user?.occupation}
                             </Typography>
                         </Box>
                         <ArrowDropDownOutlined sx={{color: theme.palette.secondary[300], fontSize:"35px"}} />
@@ -128,7 +128,9 @@ const Navbar = (props) => {
 };
 Navbar.propTypes ={
     setIsSidebarOpen: PropTypes.func,
-    isSidebarOpen:PropTypes.bool
+    isSidebarOpen:PropTypes.bool,
+    user:PropTypes.object,
+
 }
 export default Navbar;
 
