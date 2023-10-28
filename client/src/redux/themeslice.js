@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     mode:"dark",
-    userId: "63701cc1f03239b7f700000e" // simulate a logged in user 
+    //  when a user logs in their id is saved here and then used to fetch their data in other calls
+    userId: "63701cc1f03239b7f700000e" 
 }
 
 export const themeSlice = createSlice({

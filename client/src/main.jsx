@@ -5,13 +5,17 @@ import './index.css'
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from "./redux/themeslice.js";
 import { Provider } from 'react-redux';
-
+import { setupListeners } from "@reduxjs/toolkit/query"
+import { api } from './redux/api.js';
 
 const store = configureStore({
   reducer:{
-    theme: themeReducer
-  }
-})
+    theme: themeReducer,
+    [api.reducerPath]: api.reducer,
+  },
+  middleware: (getDefault) => getDefault().concat(api.middleware)
+});
+setupListeners(store.dispatch)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

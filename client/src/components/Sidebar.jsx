@@ -51,7 +51,7 @@ const navItems = [
     { text:"Perfomance", icon:<TrendingUpRounded/> },
 ]
 
-const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) => {
+const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, user}) => {
 
     const { pathname } = useLocation();
     const [ active, setActive ] = useState("");
@@ -83,7 +83,7 @@ const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) =>
                     },
                 }}
             >
-                <Box width="100%" code  sx={{marginBottom:"7rem"}}>
+                <Box width="100%"  sx={{marginBottom:"7rem"}}>
                     <Box m="1.5rem 2rem 2rem 3rem">
                         <FlexBetween color={theme.palette.secondary.main} gap="0.5rem">
                             <Typography variant="h4" fontWeight="bold">
@@ -153,8 +153,8 @@ const Sidebar = ({isDesktop, drawerWidth, isSidebarOpen, setIsSidebarOpen, }) =>
                             sx={{objectFit:"cover"}}
                         />
                         <Box textAlign="left">
-                            <Typography fontWeight="bold" fontSize="0.9rem" sx={{color:theme.palette.secondary[100]}}>James</Typography>
-                            <Typography fontSize="0.8rem" sx={{color:theme.palette.secondary[100]}}>Farmer</Typography>
+                            <Typography fontWeight="bold" fontSize="0.9rem" sx={{color:theme.palette.secondary[100]}}>{user?.name}</Typography>
+                            <Typography fontSize="0.8rem" sx={{color:theme.palette.secondary[100]}}>{user?.occupation}</Typography>
                         </Box>
                         <SettingsOutlined 
                             sx={{
@@ -176,5 +176,6 @@ Sidebar.propTypes={
     isDesktop: PropTypes.bool,
     drawerWidth: PropTypes.string,
     isSidebarOpen: PropTypes.bool,
-    setIsSidebarOpen: PropTypes.func
+    setIsSidebarOpen: PropTypes.func,
+    user: PropTypes.object
 };
