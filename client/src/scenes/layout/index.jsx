@@ -15,7 +15,8 @@ const Layout = () => {
 
   const {data} = useGetUserQuery(userId)
 
-  console.log("USER FROM FRONTEND::", data)
+  
+  //console.log("USER FROM FRONTEND::", data)
 
   const toggleSidebar = () =>{
     setIsSidebarOpen(prev => !prev)
