@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IconButton, TextField, InputAdornment } from "@mui/material";
 import {
     GridToolbarDensitySelector,
@@ -7,6 +6,8 @@ import {
     GridToolbarColumnsButton,
 } from "@mui/x-data-grid"
 import FlexBetween from "./FlexBetween";
+import { Search } from "@mui/icons-material";
+import PropTypes from 'prop-types'
 
 const DatGridCustomToolbar = ({searchInput, setSearchInput, setSearch}) =>{
     return (
@@ -17,10 +18,33 @@ const DatGridCustomToolbar = ({searchInput, setSearchInput, setSearch}) =>{
                     <GridToolbarDensitySelector />
                     <GridToolbarExport />
                 </FlexBetween>
-                
+                <TextField 
+                    label="Search..."
+                    sx={{mb:"0.5rem", width:"15rem"}}
+                    onChange={(e)=>setSearchInput(e.target.value)}
+                    value={searchInput}
+                    variant="standard"
+                    InputProps={{
+                        endAdornment:(
+                            <InputAdornment>
+                                <IconButton onClick={()=>{
+                                    setSearch(searchInput)
+                                    setSearchInput("")
+                                }}>
+                                    <Search />
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }}
+                />
             </FlexBetween>
         </GridToolbarContainer>
     )
 }
-
+DatGridCustomToolbar.propTypes={
+    searchInput: PropTypes.string, 
+    setSearchInput: PropTypes.func, 
+    setSearch: PropTypes.func
+}
 export default DatGridCustomToolbar
+
