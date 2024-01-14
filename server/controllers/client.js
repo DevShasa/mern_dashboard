@@ -35,6 +35,7 @@ export const getCustomers = async (req, res) =>{
 export const getTransactions = async(req, res)=>{
     try {
         // grab sorting info from the request queryparams
+        // sort should have this structure {"field": "userId", "sort":"desc"}
         const {page = 1, pageSize= 20, sort=null, search=""} = req.query
 
         // if there is a sort passed into params, we eant to transform.
@@ -42,7 +43,6 @@ export const getTransactions = async(req, res)=>{
         function transformSortRequestForMongo(){
             const parsedSortRequest = JSON.parse(sort)
             const transformedSortRequest = {
-                // sort should have this structure {"field": "userId", "sort":"desc"}
                 [parsedSortRequest.field]: (parsedSortRequest.sort = "asc" ? 1 : -1)
             }
 
