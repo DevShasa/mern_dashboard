@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-    baseQuery: fetchBaseQuery({baseUrl: import.meta.env.VITE_APP_BASE_URL}),
+    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:3001/"}),
     reducerPath: "adminApi",
     tagTypes:["User", "Products", "Customers", "Transactions", "Geography", "Sales"], // identify the state
     endpoints: (build)=>({

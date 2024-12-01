@@ -34,7 +34,7 @@ const Transactions = () => {
             headerName:"# of Products", 
             flex: 0.5, 
             sortable: false, 
-            renderCell: (params) => params.value.length
+            renderCell: (params) => <Box sx={{backgroundColor:"black"}}>{params.value.length}</Box>
         },
         {   
             field:"cost", 
